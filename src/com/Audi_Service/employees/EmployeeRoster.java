@@ -1,9 +1,9 @@
-package com.Audi_Service.logic;
+package com.Audi_Service.employees;
 
-import com.Audi_Service.shop.Employee;
-import com.Audi_Service.shop.PartsAdvisor;
-import com.Audi_Service.shop.ServiceAdvisor;
-import com.Audi_Service.shop.Technician;
+import com.Audi_Service.employees.Employee;
+import com.Audi_Service.employees.PartsAdvisor;
+import com.Audi_Service.employees.ServiceAdvisor;
+import com.Audi_Service.employees.Technician;
 
 import java.util.HashMap;
 import java.text.SimpleDateFormat;

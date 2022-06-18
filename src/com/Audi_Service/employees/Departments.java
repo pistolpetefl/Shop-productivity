@@ -1,4 +1,4 @@
-package com.Audi_Service.logic;
+package com.Audi_Service.employees;
 
 // I'm likely going to rename this class and slightly change the functionality of "department" to represent job title or something similar,
 // however right now is working to the scope that I need it to, and that's a problem for future me to solve.

@@ -1,6 +1,4 @@
-package com.Audi_Service.shop;
-
-import com.Audi_Service.logic.Departments;
+package com.Audi_Service.employees;
 
 public class Employee {
 
