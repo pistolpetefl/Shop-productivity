@@ -21,7 +21,7 @@ public class Main {
 
       // this doesn't work because it won't return a technician, only an employee, even though a technician is stored in the
         // array of employees. trying to figure out the proper solution
-         repairOrders.generateRO(50, roster.getEmployee(0), "17 character VIN");
+        // repairOrders.generateRO(50, roster.getEmployee(0), "17 character VIN");
         //
     }
 }

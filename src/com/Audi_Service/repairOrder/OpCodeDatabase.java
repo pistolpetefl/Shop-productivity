@@ -13,12 +13,10 @@ public class OpCodeDatabase {
         this.opCodeList = new HashMap();
     }
 
-    public void generateOpCode(int codeNumber) {
+    public void generateOpCode(int codeNumber, String title, String description) {
 
         if (!this.opCodeList.containsKey(codeNumber)) {
-            System.out.println("Enter the header: ");
-            String title = reader.nextLine();
-            this.opCodeList.put(codeNumber, new OpCode(codeNumber, title));
+            this.opCodeList.put(codeNumber, new OpCode(codeNumber, title, description));
         }
         else {
             System.out.println("This Op code is already taken, would you like to overwrite it? (y/n)");
@@ -27,12 +25,17 @@ public class OpCodeDatabase {
             answer.trim();
             if (answer == "y") {
                 System.out.println("Enter the header: ");
-                String title = reader.nextLine();
-                this.opCodeList.replace(codeNumber, new OpCode(codeNumber, title));
+                String newTitle = reader.nextLine();
+                String newDescription = reader.nextLine();
+                this.opCodeList.replace(codeNumber, new OpCode(codeNumber, newTitle, newDescription));
             }
             else {
                 System.out.println("The Op code was NOT overwritten");
             }
         }
+    }
+
+    public OpCode getOpCode(int opCodeNumber) {
+        return this.opCodeList.get(opCodeNumber);
     }
 }

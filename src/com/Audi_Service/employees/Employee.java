@@ -44,7 +44,7 @@ public class Employee {
     }
 
     @Override
-    public String toString() {public
+    public String toString() {
         return ("Name: " + this.firstName + " " + this.lastName + "\n" + "Employee Number: " + this.EMPLOYEE_NUMBER + "\n" +
                 "Department: " + this.departmentList.getDepartment(this.department) + "\n" + "Start Date: " + this.START_DATE);
     }

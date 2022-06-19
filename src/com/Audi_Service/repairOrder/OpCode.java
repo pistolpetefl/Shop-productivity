@@ -19,6 +19,10 @@ public class OpCode {  //OP codes or Operation Codes are pre-built jobs, they ha
         this.timeUnits = timeUnits;
     }
 
+    public OpCode(int opCodeNumber, String title, String description) {
+        this(opCodeNumber, title, description, 0);
+    }
+
     public int getOpCodeNumber() {
         return this.opCodeNumber;
     }

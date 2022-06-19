@@ -1,3 +1,6 @@
+//#TODO add all of the JobStatus setters and test the getter
+//#TODO fix the opcode retrieval and continue to implement it's functionality
+
 package com.Audi_Service.repairOrder;
 
 import java.util.List;
@@ -8,38 +11,53 @@ import com.Audi_Service.parts.Part;
 
 public class Job{
 
+    private JobStatus status;
+    public enum JobStatus {
+        UNASSIGNED,
+        PREASSIGNED,
+        HOLD,
+        WORK,
+        FINISHED;
+    }
+
     private String description;
-    private int jobStatus; // the status of the job (unassigned/open/working/closed) is represented by 0-4 respectively
     private Technician technician;
     private List<Part> partsList;
 
-//making oPcodes function needs work - the opcode database and opcode class are not written properly
-    public Job(int opCode, String description, Technician assignedTechnician){
-        (opCode, description);
+//making oPcodes function needs work - the opcode database and opcode class are not written properly -- done?
+    //opcode and opcodedatabase classes should be written correctly, now the jobs class needs to access them correctly.
+    //this is not a tonight problem to solve
+    public Job(int opCode, String description, Technician assignedTechnician) {
+        this(opCode, description);
         this.technician = assignedTechnician;
-        this.jobStatus = 1;
+        this.status = JobStatus.PREASSIGNED;
         this.partsList = new ArrayList<>();
     }
 
     public Job(int opCode, String description) {
-        (opCode, description);
+        this.opCode = opCode;
+        this.description = description;
         this.technician = null;
-        this.jobStatus = 0;
-        this.partsList = new ArrayList<>();
+        this.status = JobStatus.UNASSIGNED;
+        //this.partsList = new ArrayList<>();
     }
 
     public Job() {
 
     }
 
-    public void setStatus(int jobStatus) {
-        if (jobStatus > 4 || jobStatus < 0) {
-            System.out.println("Status change FAILED");
+    public void setStatusToHold() {
+        if (this.technician != null) {
+            this.status = JobStatus.HOLD;
         }
-        if (jobStatus == 0) {
-            setAssignedTechnician(null);
-        }
-        this.jobStatus = jobStatus;
+    }
+
+    public void setStatusToWork() {
+        this.status = JobStatus.WORK;
+    }
+
+    public void setStatusToFinished() {
+        this.status = JobStatus.FINISHED;
     }
 
     public void addPartToJob(String partNumber) {
@@ -66,8 +84,8 @@ public class Job{
         return this.description;
     }
 
-    public int getStatus() {
-        return this.jobStatus;
+    public JobStatus getStatus() {
+        return this.status;
     }
 
 }
