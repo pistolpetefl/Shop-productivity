@@ -13,20 +13,20 @@ Good luck to me.
 
 add comments to existing code 
 
-add the salesman class 
-
-refactor the department class 
-
-develop user interface 
-
 add toString methods to various classes
 
-implement the UserInterface class - I imagine this will involve refactoring other classes to remove the user input functionality and some print statements. the removeJob method in RepairOrder comes to mind
+add the salesman class 
 
-refactor RepairOrder class - currently one technician can be assigned to a repair order, eventually this needs to be reworked so that the repairorder is independent of the technician, that way multiple techs can be on a repair order but on different jobs
+implement parts ledger 
 
-create a list of jobs, maybe using op codes as a guideline for a class. The idea is to have a list of jobs to choose from, opposed to creating a new job object with arbritrary description and hours. 
+refactor the department class (probably set as ENUMS) 
 
-COMPLETED: Add a way to create new job objects in the RepairOrder class, currently they can only be added, but there is no way to instantiate the job object
+create GUI
 
-refactor Jobs to extend OpCodes as it's superclass
+create User Interface class
+
+implement parts ledger 
+
+create time clocking 
+
+read/write databases to CSV's
