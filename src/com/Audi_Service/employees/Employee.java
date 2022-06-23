@@ -6,16 +6,14 @@ public class Employee {
     private String lastName;
     private final int EMPLOYEE_NUMBER;
     private final String START_DATE;
-    private int department;
-    private Departments departmentList;
+    private String title;
 
-    public Employee (String firstName, String lastName, int department ,int employeeNumber, String startDate) {
+    public Employee (String firstName, String lastName, int employeeNumber, String startDate, String title) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.EMPLOYEE_NUMBER = employeeNumber;
         this.START_DATE = startDate;
-        this.department = department;
-        this.departmentList = new Departments();
+        this.title = title;
     }
 
     public String getName() {
@@ -27,6 +25,14 @@ public class Employee {
         this.lastName = newLastName;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
     public int getEmployeeNumber() {
         return this.EMPLOYEE_NUMBER;
     }
@@ -35,17 +41,9 @@ public class Employee {
         return this.START_DATE;
     }
 
-    public int getDepartment() {
-        return this.department;
-    }
-
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
     @Override
     public String toString() {
         return ("Name: " + this.firstName + " " + this.lastName + "\n" + "Employee Number: " + this.EMPLOYEE_NUMBER + "\n" +
-                "Department: " + this.departmentList.getDepartment(this.department) + "\n" + "Start Date: " + this.START_DATE);
+                "Job Title: " + this.title + "\n" + "Start Date: " + this.START_DATE);
     }
 }

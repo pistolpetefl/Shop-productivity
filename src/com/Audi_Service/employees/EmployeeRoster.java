@@ -15,7 +15,6 @@ public class EmployeeRoster {
     private Map<Integer, Employee> employeeRoster; //Integer will be the employee number
     private int employeeNumber;
     private SimpleDateFormat dateFor;
-    private int Department; // let 0, 1, 2, and 3 represent service advisors, technicians, parts advisors, and salesmen
 
     public EmployeeRoster() {
         this.employeeRoster = new HashMap<>();
