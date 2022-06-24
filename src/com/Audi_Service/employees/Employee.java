@@ -8,12 +8,13 @@ public class Employee {
     private final String START_DATE;
     private String title;
 
-    public Employee (String firstName, String lastName, int employeeNumber, String startDate, String title) {
+    //#TODO implement the JobTitle enumerator
+
+    public Employee (String firstName, String lastName, int EMPLOYEE_NUMBER, String START_DATE) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.EMPLOYEE_NUMBER = employeeNumber;
-        this.START_DATE = startDate;
-        this.title = title;
+        this.EMPLOYEE_NUMBER = EMPLOYEE_NUMBER;
+        this.START_DATE = START_DATE;
     }
 
     public String getName() {
@@ -23,14 +24,6 @@ public class Employee {
     public void setName(String newFirstName, String newLastName) {
         this.firstName = newFirstName;
         this.lastName = newLastName;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return this.title;
     }
 
     public int getEmployeeNumber() {

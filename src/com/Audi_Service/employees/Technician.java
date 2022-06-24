@@ -8,10 +8,9 @@ public class Technician extends Employee{
 
     private int flatRate;
     private ArrayList<RepairOrder> assignedRepairOrders;
-    // service department number is 0
 
-    public Technician(String firstName, String lastName, int department, int employeeNumber, String startDate) {
-        super(firstName, lastName, department,employeeNumber, startDate);
+    private Technician(String firstName, String lastName, int EMPLOYEE_NUMBER, String START_DATE) {
+        super(firstName, lastName, EMPLOYEE_NUMBER, START_DATE);
         this.flatRate = 0;
         this.assignedRepairOrders = new ArrayList<>();
     }
@@ -24,5 +23,5 @@ public class Technician extends Employee{
         return this.flatRate;
     }
 
-
+    //#TODO add methods for the assignedRepairOrders arrayList
 }

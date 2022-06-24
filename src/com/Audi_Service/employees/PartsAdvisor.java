@@ -4,10 +4,9 @@ public class PartsAdvisor extends Employee {
 
     private int weeklySalary;
     private double commissionRate;
-    //parts department number is 1
 
-    public PartsAdvisor(String firstName, String lastName, int department, int employeeNumber, String startDate) {
-        super(firstName, lastName, department, employeeNumber, startDate);
+    public PartsAdvisor(String firstName, String lastName, int EMPLOYEE_NUMBER, String START_DATE) {
+        super(firstName, lastName, EMPLOYEE_NUMBER, START_DATE);
         this.weeklySalary = weeklySalary;
         this.commissionRate = commissionRate;
     }
