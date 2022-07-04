@@ -4,7 +4,7 @@ public class Part {
 
     private final String PART_NUMBER;
     private String description;
-    private int quantity; //not sure which class to put quantity information in yet
+    private int quantity; //this variable will need to be handled by the inventory class
     private double cost;
     private double retailPrice;
     private int source;

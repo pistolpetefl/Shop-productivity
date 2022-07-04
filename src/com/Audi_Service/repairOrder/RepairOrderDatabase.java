@@ -9,15 +9,17 @@ public class RepairOrderDatabase {
 
     private Map<Integer, RepairOrder> repairOrderList;
     private int repairOrderNumber;
+    private OpCodeDatabase opCodes;
 
-    public RepairOrderDatabase() {
+    public RepairOrderDatabase(OpCodeDatabase opCodes) {
         this.repairOrderList = new HashMap<>();
         this.repairOrderNumber = 0;
+        this.opCodes = opCodes;
     }
 
-    public void generateRO(int tag, String VIN) {
+    public void generateRO(String tag, String VIN) {
         while (true) {
-            if (tag > 9999) {
+            if (tag.length() > 4) {
                 System.out.println("4 character tag number maximum");
             }
             if (VIN.length() != 17 ) {
@@ -28,7 +30,7 @@ public class RepairOrderDatabase {
             }
         }
         this.repairOrderNumber++;
-        this.repairOrderList.put(this.repairOrderNumber, new RepairOrder(repairOrderNumber, tag, VIN));
+        this.repairOrderList.put(this.repairOrderNumber, new RepairOrder(repairOrderNumber, tag, VIN, this.opCodes));
     }
     public RepairOrder getRepairOrder(int repairOrderNumber) {
         return this.repairOrderList.get(repairOrderNumber);

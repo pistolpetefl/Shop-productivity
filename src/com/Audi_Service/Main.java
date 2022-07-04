@@ -1,6 +1,7 @@
 package com.Audi_Service;
 
 import com.Audi_Service.employees.EmployeeRoster;
+import com.Audi_Service.repairOrder.OpCodeDatabase;
 import com.Audi_Service.repairOrder.RepairOrderDatabase;
 
 public class Main {
@@ -8,11 +9,12 @@ public class Main {
     public static void main(String[] args) {
 
         EmployeeRoster roster = new EmployeeRoster();
-        RepairOrderDatabase repairOrders = new RepairOrderDatabase();
+        OpCodeDatabase opCodes = new OpCodeDatabase();
+        RepairOrderDatabase repairOrders = new RepairOrderDatabase(opCodes);
 
-        roster.addEmployee("John", "Smith", 1);
-        roster.addEmployee("Jack", "White", 1);
-        roster.addEmployee("Ozzy", "Osbourne", 1);
+        roster.addEmployee("John", "Smith");
+        roster.addEmployee("Jack", "White");
+        roster.addEmployee("Ozzy", "Osbourne");
 
         System.out.println(roster.getEmployee(0));
         System.out.println(roster.getEmployee(1));

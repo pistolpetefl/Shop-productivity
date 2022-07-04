@@ -7,27 +7,27 @@ public class OpCode {  //OP codes or Operation Codes are pre-built jobs, they ha
     // that way a bulk of the information is filled for us. These act as a blueprint for a job, but the job fields must
     // remain dynamic as OP codes act as a guideline
 
-    private int opCodeNumber;
+    private String opCodeNumber;
     private String title;
     private String description;
     private int timeUnits;
 
-    public OpCode(int opCodeNumber, String title, String description, int timeUnits) {
+    public OpCode(String opCodeNumber, String title, String description, int timeUnits) {
         this.opCodeNumber = opCodeNumber;
         this.title = title;
         this.description = description;
         this.timeUnits = timeUnits;
     }
 
-    public OpCode(int opCodeNumber, String title, String description) {
+    public OpCode(String opCodeNumber, String title, String description) {
         this(opCodeNumber, title, description, 0);
     }
 
-    public int getOpCodeNumber() {
+    public String getOpCodeNumber() {
         return this.opCodeNumber;
     }
 
-    public void setOpCodeNumber(int opCodeNumber) {
+    private void setOpCodeNumber(String opCodeNumber) {
         this.opCodeNumber = opCodeNumber;
     }
 

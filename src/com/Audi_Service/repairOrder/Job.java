@@ -3,10 +3,11 @@
 
 package com.Audi_Service.repairOrder;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.Audi_Service.employees.Technician;
+import com.Audi_Service.employees.Employee;
 import com.Audi_Service.parts.Part;
 
 public class Job{
@@ -17,37 +18,47 @@ public class Job{
         PREASSIGNED,
         HOLD,
         WORK,
-        FINISHED;
+        FINISHED
     }
 
     private String description;
-    private Technician technician;
+    private Employee assignedTechnician;
     private List<Part> partsList;
+    private OpCode opCode;
+    private HashMap<String, Part> partsInventory;
 
-//making oPcodes function needs work - the opcode database and opcode class are not written properly -- done?
-    //opcode and opcodedatabase classes should be written correctly, now the jobs class needs to access them correctly.
-    //this is not a tonight problem to solve
-    public Job(int opCode, String description, Technician assignedTechnician) {
+    public Job(OpCode opCode, String description, Employee assignedTechnician) {
         this(opCode, description);
-        this.technician = assignedTechnician;
+        this.assignedTechnician = assignedTechnician;
         this.status = JobStatus.PREASSIGNED;
         this.partsList = new ArrayList<>();
     }
 
-    public Job(int opCode, String description) {
+    public Job(OpCode opCode, String description) {
         this.opCode = opCode;
         this.description = description;
-        this.technician = null;
+        this.assignedTechnician = null;
         this.status = JobStatus.UNASSIGNED;
-        //this.partsList = new ArrayList<>();
+        this.partsList = new ArrayList<>();
     }
 
-    public Job() {
+    public Job(OpCode opCode, Employee assignedTechnician) {
+        this.opCode = opCode;
+        this.assignedTechnician = assignedTechnician;
+        this.status = JobStatus.PREASSIGNED;
+        this.partsList = new ArrayList<>();
+    }
 
+    public Job(OpCode opCode) {
+        this.opCode = opCode;
+        this.description = null;
+        this.assignedTechnician = null;
+        this.status = JobStatus.UNASSIGNED;
+        this.partsList = new ArrayList<>();
     }
 
     public void setStatusToHold() {
-        if (this.technician != null) {
+        if (this.assignedTechnician != null) {
             this.status = JobStatus.HOLD;
         }
     }
@@ -60,7 +71,7 @@ public class Job{
         this.status = JobStatus.FINISHED;
     }
 
-    public void addPartToJob(String partNumber) {
+    public void addPartToJob(Part partNumber) {
 
     }
 
@@ -68,12 +79,12 @@ public class Job{
         return (ArrayList) this.partsList;
     }
 
-    public Technician getAssignedTechnician() {
-        return this.technician;
+    public Employee getAssignedTechnician() {
+        return this.assignedTechnician;
     }
 
-    public void setAssignedTechnician(Technician newAssignedTechnician) {
-        this.technician = newAssignedTechnician;
+    public void setAssignedTechnician(Employee newAssignedTechnician) {
+        this.assignedTechnician = newAssignedTechnician;
     }
 
     public void setDescription(String newDescription) {

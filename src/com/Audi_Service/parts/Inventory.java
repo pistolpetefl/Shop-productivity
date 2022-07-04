@@ -1,11 +1,10 @@
 package com.Audi_Service.parts;
 
-import java.util.Map;
 import java.util.HashMap;
 
 public class Inventory {
 
-    private Map<String, Part> partsInventory;
+    private HashMap<String, Part> partsInventory;
 
     public Inventory() {
         this.partsInventory = new HashMap<>();
@@ -62,5 +61,9 @@ public class Inventory {
         else {
             return null;
         }
+    }
+
+    public HashMap<String, Part> getInventory() {
+        return this.partsInventory;
     }
 }

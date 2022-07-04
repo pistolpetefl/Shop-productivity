@@ -6,9 +6,7 @@ public class Employee {
     private String lastName;
     private final int EMPLOYEE_NUMBER;
     private final String START_DATE;
-    private String title;
-
-    //#TODO implement the JobTitle enumerator
+    private Department department;
 
     public Employee (String firstName, String lastName, int EMPLOYEE_NUMBER, String START_DATE) {
         this.firstName = firstName;
@@ -34,9 +32,24 @@ public class Employee {
         return this.START_DATE;
     }
 
+    public void setDepartment(String department) {
+        if (department == "parts") {
+            this.department = Department.PARTS;
+        }
+        if (department == "sales") {
+            this.department = Department.SALES;
+        }
+        if (department == "service") {
+            this.department = Department.SERVICE;
+        }
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
     @Override
     public String toString() {
-        return ("Name: " + this.firstName + " " + this.lastName + "\n" + "Employee Number: " + this.EMPLOYEE_NUMBER + "\n" +
-                "Job Title: " + this.title + "\n" + "Start Date: " + this.START_DATE);
+        return ("Name: " + this.firstName + " " + this.lastName + "\n" + "Employee Number: " + this.EMPLOYEE_NUMBER + "\n" + "Start Date: " + this.START_DATE);
     }
 }

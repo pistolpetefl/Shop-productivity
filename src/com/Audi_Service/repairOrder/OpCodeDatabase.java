@@ -6,14 +6,14 @@ import java.util.Scanner;
 
 public class OpCodeDatabase {
 
-    private Map<Integer, OpCode> opCodeList;
+    private Map<String, OpCode> opCodeList;
     private Scanner reader = new Scanner(System.in);
 
-    public OpCodeDatabase(Map opCodeList) {
+    public OpCodeDatabase() {
         this.opCodeList = new HashMap();
     }
 
-    public void generateOpCode(int codeNumber, String title, String description) {
+    public void generateOpCode(String codeNumber, String title, String description) {
 
         if (!this.opCodeList.containsKey(codeNumber)) {
             this.opCodeList.put(codeNumber, new OpCode(codeNumber, title, description));
@@ -36,6 +36,16 @@ public class OpCodeDatabase {
     }
 
     public OpCode getOpCode(int opCodeNumber) {
+        return this.opCodeList.get(opCodeNumber);
+    }
+
+    public void removeOpCode(int codeNumber) {
+        if (this.opCodeList.containsKey(codeNumber)) {
+            this.opCodeList.remove(codeNumber);
+        }
+    }
+
+    public OpCode getOpCode(String opCodeNumber) {
         return this.opCodeList.get(opCodeNumber);
     }
 }
