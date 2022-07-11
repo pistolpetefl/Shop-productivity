@@ -3,17 +3,17 @@
 
 package com.Audi_Service.repairOrder;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
 import com.Audi_Service.employees.Employee;
+import com.Audi_Service.parts.Inventory;
 import com.Audi_Service.parts.Part;
 
 public class Job{
 
     private JobStatus status;
-    public enum JobStatus {
+    public enum JobStatus { //set status methods need to be condensed if possible
         UNASSIGNED,
         PREASSIGNED,
         HOLD,
@@ -23,35 +23,22 @@ public class Job{
 
     private String description;
     private Employee assignedTechnician;
-    private List<Part> partsList;
-    private OpCode opCode;
-    private HashMap<String, Part> partsInventory;
-
-    public Job(OpCode opCode, String description, Employee assignedTechnician) {
-        this(opCode, description);
-        this.assignedTechnician = assignedTechnician;
-        this.status = JobStatus.PREASSIGNED;
-        this.partsList = new ArrayList<>();
-    }
-
-    public Job(OpCode opCode, String description) {
-        this.opCode = opCode;
-        this.description = description;
-        this.assignedTechnician = null;
-        this.status = JobStatus.UNASSIGNED;
-        this.partsList = new ArrayList<>();
-    }
+    private List<Part> partsList; //change to handle Parts instead of Strings?
+    //private OpCode opCode; i removed opCode variables and replaced them with opCodeNumber variables
+    private String opCodeNumber; // i think that's what I want?
+    private static Inventory inventory; // check this and why it works or if it works
 
     public Job(OpCode opCode, Employee assignedTechnician) {
-        this.opCode = opCode;
+        this.opCodeNumber = opCode.getOpCodeNumber();
+        this.description = opCode.getDescription();
         this.assignedTechnician = assignedTechnician;
         this.status = JobStatus.PREASSIGNED;
         this.partsList = new ArrayList<>();
     }
 
     public Job(OpCode opCode) {
-        this.opCode = opCode;
-        this.description = null;
+        this.opCodeNumber = opCode.getOpCodeNumber();
+        this.description = opCode.getDescription();
         this.assignedTechnician = null;
         this.status = JobStatus.UNASSIGNED;
         this.partsList = new ArrayList<>();
@@ -71,8 +58,25 @@ public class Job{
         this.status = JobStatus.FINISHED;
     }
 
-    public void addPartToJob(Part partNumber) {
+    public void setStatusToUnassigned() {
+        this.status = JobStatus.UNASSIGNED;
+    }
 
+    public void addPartToJob(String partNumber) { //review this method
+        if (inventory.getInventory().containsKey(partNumber)) {
+            this.partsList.add(inventory.getPart(partNumber)); // not sure how i will address quantity yet -
+            //maybe when the gui asks how many, just have it access the object that handles the quantity
+        }
+    }
+
+    public void removePartFromJob(Part partNumber) {
+        if (partsListContainsPart(partNumber)) {
+            this.partsList.remove(partNumber);
+        }
+    }
+
+    public boolean partsListContainsPart(Part partNumber) {
+        return this.partsList.contains(partNumber);
     }
 
     public ArrayList getPartsList() {

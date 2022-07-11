@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Inventory {
 
-    private HashMap<String, Part> partsInventory;
+    private static HashMap<String, Part> partsInventory;
 
     public Inventory() {
         this.partsInventory = new HashMap<>();
