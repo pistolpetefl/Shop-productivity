@@ -12,7 +12,7 @@ import com.Audi_Service.parts.Part;
 
 public class Job{
 
-    private JobStatus status;
+    private JobStatus workStatus;
     public enum JobStatus { //set status methods need to be condensed if possible
         UNASSIGNED,
         PREASSIGNED,
@@ -32,7 +32,7 @@ public class Job{
         this.opCodeNumber = opCode.getOpCodeNumber();
         this.description = opCode.getDescription();
         this.assignedTechnician = assignedTechnician;
-        this.status = JobStatus.PREASSIGNED;
+        this.workStatus = JobStatus.PREASSIGNED;
         this.partsList = new ArrayList<>();
     }
 
@@ -40,26 +40,26 @@ public class Job{
         this.opCodeNumber = opCode.getOpCodeNumber();
         this.description = opCode.getDescription();
         this.assignedTechnician = null;
-        this.status = JobStatus.UNASSIGNED;
+        this.workStatus = JobStatus.UNASSIGNED;
         this.partsList = new ArrayList<>();
     }
 
     public void setStatusToHold() {
         if (this.assignedTechnician != null) {
-            this.status = JobStatus.HOLD;
+            this.workStatus = JobStatus.HOLD;
         }
     }
 
     public void setStatusToWork() {
-        this.status = JobStatus.WORK;
+        this.workStatus = JobStatus.WORK;
     }
 
     public void setStatusToFinished() {
-        this.status = JobStatus.FINISHED;
+        this.workStatus = JobStatus.FINISHED;
     }
 
     public void setStatusToUnassigned() {
-        this.status = JobStatus.UNASSIGNED;
+        this.workStatus = JobStatus.UNASSIGNED;
     }
 
     public void addPartToJob(String partNumber) { //review this method
@@ -99,8 +99,13 @@ public class Job{
         return this.description;
     }
 
-    public JobStatus getStatus() {
-        return this.status;
+    public JobStatus getWorkStatus() {
+        return this.workStatus
+
     }
 
+    public String toString() {
+        return getWorkStatus()
+                //opcode, description, employee, parts
+    }
 }
